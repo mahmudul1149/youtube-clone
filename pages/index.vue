@@ -29,15 +29,19 @@
 
 <script>
 import sidebar from '~/components/sidebar.vue'
-import items from './data/items';
+
 export default {
   components: {
     sidebar
   },
-  data() {
-    return {
-      items: items
+ 
+  computed: {
+    items() {
+      return this.$store.getters.items;
     }
+  },
+  created() {
+    this.$store.dispatch('initItems')
   }
 }
 </script>
@@ -126,6 +130,21 @@ export default {
 @media  screen and (max-width: 900px){
    .left-sidebar {
     display: none;
+   }
+}
+@media  screen and (max-width: 500px){
+   .left-sidebar {
+    display: none;
+   }
+   .main-section {
+     margin: 0 auto !important;
+    .box-container {
+          margin: 0 auto !important;
+      .box {
+        width: 300px;
+        margin: 0 auto !important;
+      }
+    }
    }
 }
 </style>
