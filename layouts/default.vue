@@ -1,8 +1,8 @@
 
 <template>
   <div>
-  <header-vue></header-vue>
-    <Nuxt/>
+    <header-vue></header-vue>
+    <Nuxt />
   </div>
 </template>
 
@@ -12,11 +12,10 @@ import HeaderVue from '../components/Header.vue'
 
 export default {
   components: {
-   HeaderVue,
+    HeaderVue,
   },
 };
 </script>
 
 <style>
-
 </style>

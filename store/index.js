@@ -1,4 +1,6 @@
 import items from '../data/items'
+import searchitem from '../data/searchitem';
+
 export const state = () => ({
     items: [],
 
@@ -21,5 +23,8 @@ export const mutations = {
 export const actions = {
     initItems({ commit }) {
         commit("SET_Items", items);
+    },
+    initSearch({ commit }) {
+        commit("SET_Items", searchitem);
     },
 };

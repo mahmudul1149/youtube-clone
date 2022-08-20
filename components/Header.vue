@@ -1,14 +1,14 @@
 <template>
   <div class=" fixed-nav-bar">
     <header class="header ">
-      <div class="logo">
+      <div @click="goHome" class="logo">
         <button class="btn btn-light"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false"
             class="style-scope yt-icon" style="pointer-events: none; display: block; width: 30px; height: 30px;">
             <g class="style-scope yt-icon">
               <path d="M21,6H3V5h18V6z M21,11H3v1h18V11z M21,17H3v1h18V17z" class="style-scope yt-icon"></path>
             </g>
           </svg></button>
-        <button class="btn btn-primary"><svg viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" focusable="false"
+        <button  class="btn btn-primary"><svg viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" focusable="false"
             class="style-scope yt-icon" style="pointer-events: none; display: block; width: 80px; height: 80px;">
             <g viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" class="style-scope yt-icon">
               <g class="style-scope yt-icon">
@@ -60,8 +60,9 @@
               </svg>
             </button>
           </div>
-          <button class=" btn btn-search  ">
-            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope  yt-icon"
+          <button class=" btn btn-search">
+            <a href="/search/">
+              <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope  yt-icon"
               style="pointer-events: none; display: block; width: 25; height: 30;">
               <g class="style-scope yt-icon">
                 <path
@@ -69,6 +70,7 @@
                   class="style-scope yt-icon"></path>
               </g>
             </svg>
+            </a>
           </button>
         </div>
         <div>
@@ -121,6 +123,14 @@ export default {
     return {
       text: ''
     }
+  },
+  methods: {
+    goHome() {
+      this.$router.push('/')
+    },
+    searchItem() {
+     this.$router.push('/search')
+    }
   }
 }
 </script>
@@ -163,6 +173,7 @@ header {
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-right: 1.5rem;
 
 
   }
@@ -194,7 +205,7 @@ header {
     .remove-text {
       position: absolute;
       top: 6px;
-      right: 0;
+      right: 3px;
     }
   }
 
@@ -247,17 +258,14 @@ header {
     }
   }
 }
-@media  screen and (max-width: 900px) {
+@media  screen and (max-width: 500px) {
      header {
-      .logo {
-        margin-right: 1.7rem;
-      }
-      .search-form {
+      margin: 0 auto;
+      .search {
         display: none;
+        margin-left: 1rem;
       }
-      .search-form input {
-        display: none;
-      }
+      
      }
 }
 </style>

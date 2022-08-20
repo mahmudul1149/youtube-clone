@@ -8,18 +8,21 @@
         <div class="box-container">
           <div class="box" v-for="item in items" :key="item.id">
             <div class="img">
-              <img :src="item.url" alt="">
+              <iframe width="100%" height="200" :src="item.videoLink"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
             </div>
             <div class="content">
               <img :src="item.profileUrl" alt="">
-             <div>
-               <a href="#" class="title">{{ item.videotitle }}</a>
+
+              <div>
+                <a href="#" class="title">{{ item.videotitle }}</a>
                 <a href="#" class="channel">{{ item.channel }}</a>
-            <br>
-            <span>{{ item.videoMeta }}</span>
-             </div>
+                <br>
+                <span>{{ item.videoMeta }}</span>
+              </div>
             </div>
-           
+
           </div>
         </div>
       </div>
@@ -34,7 +37,7 @@ export default {
   components: {
     sidebar
   },
- 
+
   computed: {
     items() {
       return this.$store.getters.items;
@@ -66,7 +69,7 @@ export default {
       padding: 4rem 2rem;
 
       .box-container {
-     
+
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1rem;
@@ -127,24 +130,28 @@ export default {
 
 }
 
-@media  screen and (max-width: 900px){
-   .left-sidebar {
+@media screen and (max-width: 900px) {
+  .left-sidebar {
     display: none;
-   }
+  }
 }
-@media  screen and (max-width: 500px){
-   .left-sidebar {
+
+@media screen and (max-width: 500px) {
+  .left-sidebar {
     display: none;
-   }
-   .main-section {
-     margin: 0 auto !important;
+  }
+
+  .main-section {
+    margin: 0 auto !important;
+
     .box-container {
-          margin: 0 auto !important;
+      margin: 0 auto !important;
+
       .box {
         width: 300px;
         margin: 0 auto !important;
       }
     }
-   }
+  }
 }
 </style>
