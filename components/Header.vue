@@ -8,7 +8,7 @@
               <path d="M21,6H3V5h18V6z M21,11H3v1h18V11z M21,17H3v1h18V17z" class="style-scope yt-icon"></path>
             </g>
           </svg></button>
-        <button  class="btn btn-primary"><svg viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" focusable="false"
+        <button class="btn btn-primary"><svg viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" focusable="false"
             class="style-scope yt-icon" style="pointer-events: none; display: block; width: 80px; height: 80px;">
             <g viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" class="style-scope yt-icon">
               <g class="style-scope yt-icon">
@@ -49,7 +49,7 @@
         <div class="search-box">
           <div class="search-form">
             <input type="text" name="" id="" placeholder="Search" v-model="text">
-            <button class="btn remove-text" v-if="text">
+            <button @click="removeText" class="btn remove-text" v-if="text">
               <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon"
                 style="pointer-events: none; display: block; width: 20; height: 20;">
                 <g class="style-scope yt-icon">
@@ -60,9 +60,9 @@
               </svg>
             </button>
           </div>
-          <button class=" btn btn-search">
-            <a href="/search/">
-              <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope  yt-icon"
+          <button @click="goPage" class=" btn btn-search" :disabled="text === ''">
+
+            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope  yt-icon"
               style="pointer-events: none; display: block; width: 25; height: 30;">
               <g class="style-scope yt-icon">
                 <path
@@ -70,7 +70,7 @@
                   class="style-scope yt-icon"></path>
               </g>
             </svg>
-            </a>
+
           </button>
         </div>
         <div>
@@ -89,8 +89,8 @@
       <div>
         <div class="button-box">
           <button class="btn">
-            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false"
-              class="style-scope  yt-icon" style="pointer-events: none; display: block; width: 25; height: 25;">
+            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope  yt-icon"
+              style="pointer-events: none; display: block; width: 25; height: 25;">
               <g class="style-scope yt-icon">
                 <path
                   d="M14,13h-3v3H9v-3H6v-2h3V8h2v3h3V13z M17,6H3v12h14v-6.39l4,1.83V8.56l-4,1.83V6 M18,5v3.83L22,7v8l-4-1.83V19H2V5H18L18,5 z"
@@ -128,19 +128,23 @@ export default {
     goHome() {
       this.$router.push('/')
     },
-    searchItem() {
-     this.$router.push('/search')
+    goPage() {
+      this.$router.push('/search')
+    },
+    removeText() {
+      this.text = ''
     }
   }
 }
 </script>
 
 <style lang="scss">
- * {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-} 
+}
+
 .btn {
   cursor: pointer;
   border: none;
@@ -167,7 +171,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
- border-bottom: 1px solid rgba(164, 164, 167, 0.3);
+  border-bottom: 1px solid rgba(164, 164, 167, 0.3);
 
   .logo {
     display: flex;
@@ -258,14 +262,16 @@ header {
     }
   }
 }
-@media  screen and (max-width: 500px) {
-     header {
-      margin: 0 auto;
-      .search {
-        display: none;
-        margin-left: 1rem;
-      }
-      
-     }
+
+@media screen and (max-width: 500px) {
+  header {
+    margin: 0 auto;
+
+    .search {
+      display: none;
+      margin-left: 1rem;
+    }
+
+  }
 }
 </style>
