@@ -25,7 +25,7 @@
                             <img :src="item.profileUrl" alt="">
 
                             <div>
-                                <a href="#" class="title">{{ item.videotitle }}</a>
+                                <a href="#" class="title">{{ item.videotitle }}</a> <br>
                                 <br>
                                 <a href="#" class="channel">{{ item.channel }}</a>
                                 <br>

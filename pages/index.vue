@@ -17,6 +17,7 @@
 
               <div>
                 <a href="#" class="title">{{ item.videotitle }}</a>
+                <br>
                 <a href="#" class="channel">{{ item.channel }}</a>
                 <br>
                 <span>{{ item.videoMeta }}</span>
